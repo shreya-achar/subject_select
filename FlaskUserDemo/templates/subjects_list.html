@@ -22,7 +22,7 @@
     {% endfor %}
 </table>
 {% if session['role'] == 'user' %}
-<a href="{{ url_for('view_user', user_id=session['user_id']) }}">View your account</a>
+<a href="{{ url_for('view_user', user_id=session['user_id']) }}">View your profile</a>
 <br>
 <a href="{{ url_for('selected_subjects', user_id=session['user_id']) }}">Selected subjects</a>
 {% endif %}
