@@ -1,0 +1,33 @@
+{% extends '_layout.html' %}
+
+{% block title %} Selected Subjects {% endblock %}
+
+{% block content %}
+
+<h1>{{student.first_name}}'s selected subjects</h1>
+
+<table>
+    {% for row in result %}
+    <tr>
+        <td>{{ row.subject_name }}</td>
+        <td>
+            {% if session['role'] == 'user' %}
+            <a href="/deletesub?subject_id={{row.subject_id}}" onclick="return confirm('Are you sure?')">Delete</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<p>
+    <a href="{{ url_for('subjects_list') }}">Subject list</a>
+    <br>
+    {% if session['role'] == 'user' %}
+    <a href="{{ url_for('view_user', user_id=session['user_id']) }}">View your account</a>
+    {% endif %}
+</p>
+{% if session['role'] == 'admin' %}
+<p>
+    <a href="{{ url_for('list_users') }}">View all users</a>
+</p>
+{% endif %}
+{% endblock %}

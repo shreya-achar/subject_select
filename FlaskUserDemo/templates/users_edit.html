@@ -1,0 +1,40 @@
+{% extends '_layout.html'%}
+
+{% block title %} Edit profile {% endblock %}
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="user_id" value="{{ result.user_id }}">
+    <input type="hidden" name="old_avatar" value="{{ result.avatar }}">
+
+    <label for="first_name">First Name:</label>
+    <input id="first_name" name="first_name" type="text" value="{{ result.first_name }}">
+   
+    <label for="last_name">Last Name:</label>
+    <input id="last_name" name="last_name" type="text" value="{{ result.last_name }}">
+
+    <label for="email">Email:</label>
+    <input id="email" name="email" type="email" value="{{ result.email }}">
+
+    <label for="password">Password:</label>
+    <input id="password" name="password" type="password">
+ 
+    <label for="pic">Profile picture:</label>
+    <input id="pic" type="file" name="avatar" accept="image/*">
+
+    <img src="{{ url_for('static', filename='images/' + (result.avatar or 'default.png')) }}">
+
+    <input type="submit" value="Edit profile">
+</form>
+<script>
+    let fileInput = document.querySelector("#pic");
+    let image = document.querySelector(".avatar");
+
+    fileInput.addEventListener("change", updateImage);
+
+    function updateImage() {
+        image.src = URL.createObjectURL(fileInput.files[0]);
+    }
+</script>
+{% endblock %}

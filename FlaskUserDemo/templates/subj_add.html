@@ -1,0 +1,12 @@
+{% extends '_layout.html' %}
+
+{% block title %} Add subject {% endblock %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    <label for="subject_name">Subject Name:</label>
+    <input id="subject_name" name="subject_name">
+    <br>
+    <input type="submit" value="Add subject">
+</form>
+{% endblock %}

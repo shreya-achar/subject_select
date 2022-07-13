@@ -1,0 +1,11 @@
+__pycache__/
+env/
+
+.vs/
+obj/
+*.suo
+*.user
+
+.env
+FlaskUserDemo/static/images/
+!FlaskUserDemo/static/images/default.png
