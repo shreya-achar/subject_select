@@ -13,15 +13,15 @@
     <br>
     <a href="{{ url_for('selected_subjects', user_id=session['user_id']) }}">Selected list</a>
     <br>
-    <a href="/edit?id={{ result.user_id }}">Edit</a>
+    <a href="/edit?user_id={{ result.user_id }}">Edit</a>
 </p>
 {% endif %}
 
 {% if session['role'] == 'admin' %}
 <p>
-    <a href="/delete?id={{ result.user_id }}" onclick="return confirm('Are you sure?')">Delete</a>
+    <a href="/delete?user_id={{ result.user_id }}" onclick="return confirm('Are you sure?')">Delete</a>
     <br>
-    <a href="/edit?id={{ result.user_id }}">Edit</a>
+    <a href="/edit?user_id={{ result.user_id }}">Edit</a>
     <br>
     <a href="/selected?user_id={{ result.user_id }}">Selected subjects</a>
     <br>
