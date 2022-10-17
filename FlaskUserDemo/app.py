@@ -208,7 +208,7 @@ def add_subject():
     # Set the startdate and enddate for subject selection
     today = datetime.date.today()
     startdate = datetime.date(2022, 7, 11)
-    enddate = datetime.date(2022, 7, 12)
+    enddate = datetime.date(2022, 9, 12)
 
     with create_connection() as connection:
         with connection.cursor() as cursor:
