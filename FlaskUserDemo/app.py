@@ -315,8 +315,7 @@ def edit_user():
     else:
         with create_connection() as connection:
             with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM users WHERE user_id = %s",
-                              request.args['user_id'])
+                cursor.execute("SELECT * FROM users WHERE user_id = %s", request.args['user_id'])
                 result = cursor.fetchone()
         return render_template('users_edit.html', result=result)
 
