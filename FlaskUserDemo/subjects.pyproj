@@ -53,8 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="static\" />
-    <Folder Include="static\images\" />
     <Folder Include="static\css\" />
+    <Folder Include="static\images\" />
     <Folder Include="templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
