@@ -12,38 +12,7 @@
 </head>
 <body>
 
-    <!--<nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                {% if 'logged_in' not in session %}
-                <a href="{{ url_for('login') }}" class="btn btn-outline-success me-2">Login</a>
-                <a href="{{ url_for('add_user') }}" class="btn btn-outline-success me-2">Sign up</a>
-                {% endif %}
-                {% if 'logged_in' in session %}
-                You are logged in as {{ session.first_name }}
-                <img src="{{ url_for('static', filename='images/' + (result.avatar or 'default.png')) }}" style=" height:20px;">            <a href="/logout">Log out</a>
-                {% endif %}
-            </div>
-        </div>
-    </nav>-->
-
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Features</a>
@@ -60,14 +29,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Pricing</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown link
+                    <li>
+                        {% if 'logged_in' not in session %}
+                        <a href="{{ url_for('login') }}">Login</a>
+                        <a href="{{ url_for('add_user') }}">Sign up</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item dropdown" id="userprof">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% if 'logged_in' in session %}
+                            You are logged in as {{ session.first_name }}
+                            <img src="{{ url_for('static', filename='images/' + (avatar or 'default.png')) }}" style=" height:20px;">
+                            {% endif %}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('view_user', user_id=session['user_id']) }}">Profile</a></li>
+                            <li><a class="dropdown-item" href="/logout">Log out</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -75,12 +52,6 @@
         </div>
     </nav>
 
-    <!--<nav>
-        {% if 'logged_in' in session %}
-        You are logged in as {{ session.first_name }}
-        <a href="/logout">Log out</a>
-        {% endif %}
-    </nav>-->
     {% block content %}
     {% endblock %}
 

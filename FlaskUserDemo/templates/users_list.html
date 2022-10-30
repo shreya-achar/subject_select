@@ -3,22 +3,29 @@
 {% block title %} Dashboard {% endblock %}
 
 {% block content %}
-<table>
-    <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Email</th>
-    </tr>
-    {% for row in result %}
-    <tr>
-        <td>{{ row.first_name }}</td>
-        <td>{{ row.last_name }}</td>
-        <td>{{ row.email }}</td>
-        <td>
-            <a href="/view?user_id={{ row.user_id }}">View</a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="container mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in result %}
+            <tr>
+                <td>{{ row.first_name }}</td>
+                <td>{{ row.last_name }}</td>
+                <td>{{ row.email }}</td>
+                <td>
+                    <a href="/view?user_id={{ row.user_id }}">View</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
 <a href="{{ url_for('subjects_list') }}">Subjects list</a>
 {% endblock %}

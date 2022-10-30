@@ -3,6 +3,16 @@
 {% block title %} Login {% endblock %}
 
 {% block content %}
+<style>
+    #navbar {
+        display: none;
+    }
+</style>
+
+<div class="container my-3">
+    <img src="static/images/paklogo.png" alt="Pakuranga College" class="mx-auto d-block" width="100" height="100">
+</div>
+
 <div class="container p-5 my-5 border">
     <h2>Login</h2>
     <form class="form-horizontal" method="post">
@@ -25,4 +35,5 @@
         </div>
     </form>
 </div>
+
 {% endblock %}

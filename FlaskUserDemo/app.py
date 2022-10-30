@@ -26,7 +26,7 @@ def restrict():
 
 @app.route('/')
 def home():
-    return render_template("index.html")
+    return render_template('index.html')
 
 # Let the user login in with their email and password
 @app.route('/login', methods=['GET', 'POST'])
@@ -52,7 +52,7 @@ def login():
                 session['user_id'] = result['user_id']
                 session['role'] = result['role']
                 if session['role'] == 'admin':
-                    return redirect('/dashboard')
+                    return redirect('/')
                 else:
                     return redirect (url_for('view_user', user_id=session['user_id']))                    
             else:
