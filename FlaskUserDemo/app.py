@@ -52,7 +52,7 @@ def login():
                 session['user_id'] = result['user_id']
                 session['role'] = result['role']
                 if session['role'] == 'admin':
-                    return redirect('/')
+                    return redirect('/dashboard')
                 else:
                     return redirect (url_for('view_user', user_id=session['user_id']))                    
             else:

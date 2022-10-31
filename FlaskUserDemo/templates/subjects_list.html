@@ -3,24 +3,31 @@
 {% block title %} Subjects {% endblock %}
 
 {% block content %}
-<table>
-    <tr>
-        <th>Subjects</th>
-    </tr>
-    {% for row in result %}
-    <tr>
-        <td>{{ row.subject_name }}</td>
-        {% if session['role'] == 'user' %}
-        <td><a href="/addsub?subject_id={{row.subject_id}}" onclick="return confirm('Add to subjects list?')">Add subject</a></td>
-        {% endif %}
-        {% if session['role'] == 'admin' %}
-        <td><a href="/admineditsub?subject_id={{row.subject_id}}">Edit</a></td>
-        <td><a href="/admindeletesub?subject_id={{row.subject_id}}">Delete</a></td>
-        <td><a href="/viewsub?subject_id={{ row.subject_id }}">View students</a></td>
-        {% endif %}
-    </tr>
-    {% endfor %}
-</table>
+<div class="container mt-3">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Subjects</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for row in result %}
+            <tr>
+                <td>{{ row.subject_name }}</td>
+                {% if session['role'] == 'user' %}
+                <td><a href="/addsub?subject_id={{row.subject_id}}" onclick="return confirm('Add to subjects list?')">Add subject</a></td>
+                {% endif %}
+                {% if session['role'] == 'admin' %}
+                <td><a href="/admineditsub?subject_id={{row.subject_id}}">Edit</a></td>
+                <td><a href="/admindeletesub?subject_id={{row.subject_id}}">Delete</a></td>
+                <td><a href="/viewsub?subject_id={{ row.subject_id }}">View students</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
 {% if session['role'] == 'user' %}
 <a href="{{ url_for('view_user', user_id=session['user_id']) }}">View your profile</a>
 <br>
