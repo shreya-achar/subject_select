@@ -5,7 +5,7 @@
 {% block content %}
 
 <h1>{{ result.first_name }} {{ result.last_name }}</h1>
-<img src="{{ url_for('static', filename='images/' + (result.avatar or 'default.png')) }}" style=" height:200px;">
+<img src="{{ url_for('static', filename='images/' + (result.avatar or 'default.png')) }}" style=" height:200px;">`
 
 {% if session['role'] == 'user' %}
 <p>
