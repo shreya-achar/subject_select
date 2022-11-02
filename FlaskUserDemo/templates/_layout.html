@@ -30,7 +30,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="nav-item dropdown" id="userprof" style="color:white;">
+            <!--<div class="nav-item dropdown" id="userprof" style="color:white;">
                 <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {% if 'logged_in' in session %}
                     You are logged in as {{ session.first_name }}
@@ -41,9 +41,16 @@
                     <li><a class="dropdown-item" href="{{ url_for('view_user', user_id=session['user_id']) }}">Profile</a></li>
                     <li><a class="dropdown-item" href="/logout">Log out</a></li>
                 </ul>
-            </div>
+            </div>-->
         </div>
     </nav>
+
+    {% if 'logged_in' in session %}
+    You are logged in as {{ session.first_name }}
+    <a class="nav-link" href="/logout">Log out</a>
+    {% else %}
+    <<a class="nav-link" href="/login">Log in</a>
+    {% endif %}
 
     {% block content %}
     {% endblock %}
