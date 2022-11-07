@@ -6,20 +6,21 @@
 <div class="container mt-3">
     <table class="table table-striped">
         <thead>
-        <tr>
-            <th>Subjects</th>
-        </tr>
+            <tr>
+                <th>Subjects</th>
+            </tr>
         </thead>
         <tbody>
             {% for row in result %}
             <tr>
+                <td>{{ row.subject_id }}</td>
                 <td>{{ row.subject_name }}</td>
                 {% if session['role'] == 'user' %}
-                <td><a href="/addsub?subject_id={{row.subject_id}}" onclick="return confirm('Add to subjects list?')">Add subject</a></td>
+                <td><a href="/addsub?subject_id={{ row.subject_id }}" onclick="return confirm('Add to subjects list?')">Add subject</a></td>
                 {% endif %}
                 {% if session['role'] == 'admin' %}
-                <td><a href="/admineditsub?subject_id={{row.subject_id}}">Edit</a></td>
-                <td><a href="/admindeletesub?subject_id={{row.subject_id}}">Delete</a></td>
+                <td><a href="/admineditsub?subject_id={{ row.subject_id }}">Edit</a></td>
+                <td><a href="/admindeletesub?subject_id={{ row.subject_id }}">Delete</a></td>
                 <td><a href="/viewsub?subject_id={{ row.subject_id }}">View students</a></td>
                 {% endif %}
             </tr>
@@ -27,6 +28,7 @@
         </tbody>
     </table>
 </div>
+
 
 {% if session['role'] == 'user' %}
 <a href="{{ url_for('view_user', user_id=session['user_id']) }}">View your profile</a>

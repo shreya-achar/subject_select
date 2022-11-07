@@ -1,10 +1,13 @@
 {% extends '_layout.html' %}
 
-{% block title %} Sign Up {% endblock %}
+{% block title %} Register {% endblock %}
 
 {% block content %}
 <style>
     #navbar {
+        display: none;
+    }
+    #footer {
         display: none;
     }
 </style>
@@ -14,36 +17,36 @@
 </div>
 
 <div class="container p-5 my-5 border">
-    <h2 style="text-align:center">Sign Up</h2>
+    <h2 style="text-align:center">Register</h2>
     <form class="form-horizontal" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label class="control-label col-sm-2" for="first_name">First Name:</label>
             <div class="col-sm-10">
-                <input class="form-control" id="first_name" name="first_name">
+                <input class="form-control input_box" id="first_name" name="first_name">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="last_name">Last Name:</label>
             <div class="col-sm-10">
-                <input class="form-control" id="last_name" name="last_name">
+                <input class="form-control input_box" id="last_name" name="last_name">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">Email:</label>
             <div class="col-sm-10">
-                <input class="form-control" id="email" name="email" type="email" placeholder="Enter email">
+                <input class="form-control input_box" id="email" name="email" type="email" placeholder="Enter email">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="password">Password:</label>
             <div class="col-sm-10">
-                <input class="form-control" id="password" name="password" type="password" placeholder="Enter password">
+                <input class="form-control input_box" id="password" name="password" type="password" placeholder="Enter password">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="avatar">Profile picture:</label>
             <div>
-                <input class="form-control" id="avatar" name="avatar" type="file" accept="image/*">
+                <input class="form-control input_box" id="avatar" name="avatar" type="file" accept="image/*">
             </div>
         </div>
         <div class="form-group my-3">
@@ -52,6 +55,9 @@
             </div>
         </div>
     </form>
+</div>
+<div class="container">
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login in!</a></p>
 </div>
 <script>
     let emailInput = document.querySelector("#email");

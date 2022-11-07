@@ -1,1 +1,46 @@
+* {
+    font-family: 'Varela Round', sans-serif;
+}
 
+
+label {
+    margin-top: 10px;
+}
+
+table {
+    border-spacing: 5px;
+}
+
+th, td {
+    border: 2px solid #5d8d81;
+    text-align: left;
+    padding: 5px;
+}
+
+.user_prof {
+    border-radius: 50%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    height: 200px;
+}
+
+#user_name {
+    padding-right:95px;
+}
+
+.btn btn-success {
+    background-color: #77c4d6; 
+    color: aliceblue; 
+    border: solid #77c4d6; 
+    border-radius: 5px; 
+    padding:5px;
+    text-decoration: none;
+}
+
+#footer {
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+}

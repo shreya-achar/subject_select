@@ -6,18 +6,52 @@
 
 <h1>{{student.first_name}}'s selected subjects</h1>
 
-<table>
-    {% for row in result %}
-    <tr>
-        <td>{{ row.subject_name }}</td>
-        <td>
-            {% if session['role'] == 'user' %}
-            <a href="/deletesub?subject_id={{row.subject_id}}" onclick="return confirm('Are you sure?')">Delete</a>
-            {% endif %}
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="container mt-3">
+    <table class="table table-striped">
+        <tbody>
+            {% for row in result %}
+            <tr>
+                <td>{{ row.subject_name }}</td>
+                <td>
+                    <a href="/deletesub?subject_id={{row.subject_id}}" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+                <td>
+                    <!-- Button to Open the Modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Open modal
+                    </button>
+
+                    <!-- The Modal -->
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Modal Heading</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Modal body..
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
 <p>
     <a href="{{ url_for('subjects_list') }}">Subject list</a>
     <br>
