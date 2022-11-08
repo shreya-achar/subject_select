@@ -27,6 +27,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('list_users') }}">Dashboard</a>
                     </li>
+                    <li>
+                        <a class="nav-link" href="{{ url_for('subjects_list') }}">Subjects</a>
+                    </li>
                     {% endif %}
                     {% if session['role'] == 'user' %}
                     <li>
@@ -66,12 +69,13 @@
         {% endfor %}
     </ul>
 
-<div class="container" id="footer">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+<footer class="footer mt-auto py-3 bg-light" id="footer">
+    <div class="container">
+        <p>&copy;Pakuranga College</p>
         <img src="static/images/paklogo.png" alt="Pakuranga College" style="width:50px;">
-        <p>&copy; Pakuranga College</p>
-    </footer>
-</div>
+    </div>
+</footer>
+
 
 </body>
 </html>

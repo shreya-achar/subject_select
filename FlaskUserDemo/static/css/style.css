@@ -38,9 +38,35 @@ th, td {
 }
 
 #footer {
-    position:fixed;
-    left:0;
-    right:0;
-    bottom:0;
+    position:absolute;
+    bottom: 0;
     width:100%;
+}
+
+#indexfooter {
+    margin-top:20px;
+    position:absolute;
+    width:100%;
+}
+
+#subjfooter {
+    margin-top:20px;
+    position:absolute;
+    width:100%;
+}
+
+.listbtn {
+    background-color: #60b0c3;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.listbtn:hover {
+    color:white;
 }

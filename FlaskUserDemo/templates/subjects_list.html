@@ -3,6 +3,13 @@
 {% block title %} Subjects {% endblock %}
 
 {% block content %}
+
+<style>
+    #footer{
+        display:none;
+    }
+</style> 
+
 <div class="container mt-3">
     <table class="table table-striped">
         <thead>
@@ -13,15 +20,14 @@
         <tbody>
             {% for row in result %}
             <tr>
-                <td>{{ row.subject_id }}</td>
                 <td>{{ row.subject_name }}</td>
                 {% if session['role'] == 'user' %}
-                <td><a href="/addsub?subject_id={{ row.subject_id }}" onclick="return confirm('Add to subjects list?')">Add subject</a></td>
+                <td><a href="/addsub?subject_id={{ row.subject_id }}" onclick="return confirm('Add to subjects list?')" class="listbtn">Add subject</a></td>
                 {% endif %}
                 {% if session['role'] == 'admin' %}
-                <td><a href="/admineditsub?subject_id={{ row.subject_id }}">Edit</a></td>
-                <td><a href="/admindeletesub?subject_id={{ row.subject_id }}">Delete</a></td>
-                <td><a href="/viewsub?subject_id={{ row.subject_id }}">View students</a></td>
+                <td><a href="/admineditsub?subject_id={{ row.subject_id }}" class="listbtn">Edit</a></td>
+                <td><a href="/admindeletesub?subject_id={{ row.subject_id }}" class="listbtn">Delete</a></td>
+                <td><a href="/viewsub?subject_id={{ row.subject_id }}" class="listbtn">View students</a></td>
                 {% endif %}
             </tr>
             {% endfor %}
@@ -31,15 +37,18 @@
 
 
 {% if session['role'] == 'user' %}
-<a href="{{ url_for('view_user', user_id=session['user_id']) }}">View your profile</a>
-<br>
 <a href="{{ url_for('selected_subjects', user_id=session['user_id']) }}">Selected subjects</a>
 {% endif %}
 <br>
 {% if session['role'] == 'admin' %}
 <a href="{{ url_for('adminadd_subject') }}">Add subject</a>
-<br>
-<a href="{{ url_for('list_users') }}">View all users</a>
 {% endif %}
+
+<footer class="footer py-3 bg-light" id="subjfooter">
+    <div class="container">
+        <p>&copy;Pakuranga College</p>
+        <img src="static/images/paklogo.png" alt="Pakuranga College" style="width:50px;">
+    </div>
+</footer>
 
 {% endblock %}
