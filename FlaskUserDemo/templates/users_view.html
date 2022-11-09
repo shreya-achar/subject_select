@@ -4,29 +4,35 @@
 
 {% block content %}
 
-<h1>{{ result.first_name }} {{ result.last_name }}</h1>
-<img src="{{ url_for('static', filename='images/' + (result.avatar or 'default.png')) }}" style=" height:200px;" class="user_prof">
+<div class="container pt-3">
+    <div class="row">
+        <div class="col-sm-6 text-center" id="userview">
+            <h1>{{ result.first_name }} {{ result.last_name }}</h1>
+            <img src="{{ url_for('static', filename='images/' + (result.avatar or 'default.png')) }}" style=" height:200px;" class="user_prof">
+        </div>
+        <div class="col-sm-6">
+            {% if session['role'] == 'user' %}
+            <p>
+                <a href="{{ url_for('subjects_list') }}" class="userbtn">Subjects list</a>
+                <br>
+                <a href="{{ url_for('selected_subjects', user_id=session['user_id']) }}" class="userbtn">Selected list</a>
+                <br>
+                <a href="/edit?user_id={{ result.user_id }}" class="userbtn">Edit</a>
+            </p>
+            {% endif %}
 
-{% if session['role'] == 'user' %}
-<p>
-    <a href="{{ url_for('subjects_list') }}">Subjects list</a>
-    <br>
-    <a href="{{ url_for('selected_subjects', user_id=session['user_id']) }}">Selected list</a>
-    <br>
-    <a href="/edit?user_id={{ result.user_id }}">Edit</a>
-</p>
-{% endif %}
-
-{% if session['role'] == 'admin' %}
-<p>
-    <a href="/delete?user_id={{ result.user_id }}" onclick="return confirm('Are you sure?')">Delete</a>
-    <br>
-    <a href="/edit?user_id={{ result.user_id }}">Edit</a>
-    <br>
-    <a href="/selected?user_id={{ result.user_id }}">Selected subjects</a>
-    <br>
-    <a href="{{ url_for('list_users') }}">View all users</a>
-</p>
-{% endif %}
+            {% if session['role'] == 'admin' %}
+            <p>
+                <a href="/delete?user_id={{ result.user_id }}" onclick="return confirm('Are you sure?')" class="userbtn">Delete</a>
+                <br>
+                <a href="/edit?user_id={{ result.user_id }}" class="userbtn">Edit</a>
+                <br>
+                <a href="/selected?user_id={{ result.user_id }}" class="userbtn">Selected subjects</a>
+                <br>
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</div>
 
 {% endblock %}

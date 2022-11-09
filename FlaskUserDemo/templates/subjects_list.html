@@ -4,12 +4,6 @@
 
 {% block content %}
 
-<style>
-    #footer{
-        display:none;
-    }
-</style> 
-
 <div class="container mt-3">
     <table class="table table-striped">
         <thead>
@@ -43,12 +37,5 @@
 {% if session['role'] == 'admin' %}
 <a href="{{ url_for('adminadd_subject') }}">Add subject</a>
 {% endif %}
-
-<footer class="footer py-3 bg-light" id="subjfooter">
-    <div class="container">
-        <p>&copy;Pakuranga College</p>
-        <img src="static/images/paklogo.png" alt="Pakuranga College" style="width:50px;">
-    </div>
-</footer>
 
 {% endblock %}

@@ -4,21 +4,24 @@
 
 {% block content %}
 
-<h1>{{subject.subject_name}}'s Students</h1>
+<div class="container pt-3">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>{{subject.subject_name}}'s Students</h1>
 
-<table>
-    <tr>
-        <th>First name</th>
-        <th>Last name</th>
-    </tr>
-    {% for row in result %}
-    <tr>
-        <td>{{ row.first_name }}</td>
-        <td>{{ row.last_name }}</td>
-    </tr>
-    {% endfor %}
-</table>
-<a href="{{ url_for('list_users') }}">View all users</a>
-<br>
-<a href="{{ url_for('subjects_list') }}">Subjects list</a>
+            <table>
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                </tr>
+                {% for row in result %}
+                <tr>
+                    <td>{{ row.first_name }}</td>
+                    <td>{{ row.last_name }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}

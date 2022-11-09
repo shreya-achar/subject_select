@@ -37,24 +37,6 @@ th, td {
     text-decoration: none;
 }
 
-#footer {
-    position:absolute;
-    bottom: 0;
-    width:100%;
-}
-
-#indexfooter {
-    margin-top:20px;
-    position:absolute;
-    width:100%;
-}
-
-#subjfooter {
-    margin-top:20px;
-    position:absolute;
-    width:100%;
-}
-
 .listbtn {
     background-color: #60b0c3;
     border: none;
@@ -69,4 +51,29 @@ th, td {
 
 .listbtn:hover {
     color:white;
+}
+
+#userview {
+    padding: 40px;
+    background-color: #fefefe;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+}
+
+.userbtn {
+    background-color: #60b0c3;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-top:5px;
+    margin-left:30px;
+}
+
+.userbtn:hover {
+    color: white;
 }
