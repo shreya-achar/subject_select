@@ -3,10 +3,19 @@
 {% block title %} Add subject {% endblock %}
 
 {% block content %}
-<form method="post" enctype="multipart/form-data">
-    <label for="subject_name">Subject Name:</label>
-    <input id="subject_name" name="subject_name">
-    <br>
-    <input type="submit" value="Add subject">
-</form>
+<div class="container pt-3">
+    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="subject_name">Subject Name:</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="subject_name" name="subject_name" type="text">
+            </div>
+        </div>
+        <div class="form-group my-3">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="Add subject">
+            </div>
+        </div>
+    </form>
+</div>
 {% endblock %}
